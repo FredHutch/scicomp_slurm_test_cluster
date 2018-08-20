@@ -42,4 +42,7 @@ execute 'create slurm account database' do
     '-D mysql -r -B -N -h 127.0.0.1 -e ' \
     '"CREATE DATABASE slurm_acct_db"'
   action :run
+  not_if do
+    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SHOW DATABASES LIKE 'slurm_acct_db'"` == 'slurm_acct_db'
+  end
 end
