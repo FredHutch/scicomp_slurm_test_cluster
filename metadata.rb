@@ -18,3 +18,5 @@ issues_url 'https://github.com/fredhutch/scicomp_slurm_test_cluster/issues'
 # a Supermarket.
 #
 source_url 'https://github.com/fredhutch/scicomp_slurm_test_cluster'
+
+depends 'mysql', '~> 8.0'

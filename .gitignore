@@ -21,3 +21,4 @@ Berksfile.lock
 Policyfile.lock.json
 test/fixtures/packages/*
 !test/fixtures/packages/README.md
+attributes/passwords.rb

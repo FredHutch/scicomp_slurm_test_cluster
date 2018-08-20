@@ -19,6 +19,7 @@ suites:
   - name: default
     run_list:
       - recipe[scicomp_slurm_test_cluster::repository]
+      - recipe[scicomp_slurm_test_cluster::database]
     verifier:
       inspec_tests:
         - test/smoke/default
