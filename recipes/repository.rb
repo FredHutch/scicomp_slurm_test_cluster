@@ -6,7 +6,7 @@
 
 # Set up a repository on the local file system.  Source information
 # here:
-#   https://askubuntu.com/a/176546 
+#   https://askubuntu.com/a/176546
 #   https://help.ubuntu.com/community/Repositories/Personal
 
 # Install dpkg utilities
@@ -27,7 +27,8 @@ end
 # Build package index
 execute 'build packages.gz' do
   command 'dpkg-scanpackages . /dev/null > Packages'
-  #command 'dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz'
+  # For some reason apt isn't looking for the gzipped Packages file...
+  # command 'dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz'
   cwd '/export/packages/slurm'
   user 'root'
   umask '0022'
