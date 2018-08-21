@@ -11,7 +11,7 @@ end
 user 'slurm' do
   comment 'slurm-wlm user account'
   uid '6281'
-  gid '6281'
+  gid 'slurm'
   home '/var/spool/slurm-llnl'
   shell '/bin/bash'
 end
