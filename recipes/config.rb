@@ -54,8 +54,8 @@ service 'slurmdbd' do
 end
 
 execute 'register cluster' do
-  command "sacctmgr -i create cluster #{node['slurm_test_cluster']['ClusterName']}"
-  not_if { `sacctmgr -P -n show cluster where name=#{node['slurm_test_cluster']['ClusterName']} format=cluster`.chomp == node['slurm_test_cluster']['ClusterName'] }
+  command "sleep 10 && sacctmgr -i create cluster #{node['slurm_test_cluster']['ClusterName']}"
+  not_if { `sleep 10 && sacctmgr -P -n show cluster where name=#{node['slurm_test_cluster']['ClusterName']} format=cluster`.chomp == node['slurm_test_cluster']['ClusterName'] }
 end
 
 service 'slurmctld' do
