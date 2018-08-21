@@ -21,6 +21,7 @@ suites:
       - recipe[scicomp_slurm_test_cluster::repository]
       - recipe[scicomp_slurm_test_cluster::database]
       - recipe[scicomp_slurm_test_cluster::packages]
+      - recipe[scicomp_slurm_test_cluster::config]
     verifier:
       inspec_tests:
         - test/smoke/default

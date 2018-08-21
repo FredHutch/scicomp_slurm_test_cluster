@@ -2,7 +2,7 @@
 # Put this file on all nodes of your cluster.
 # See the slurm.conf man page for more information.
 #
-ControlMachine=slurm18-test
+ControlMachine=<%= @hostname %>
 #ControlAddr=
 #BackupController=
 #BackupAddr=
@@ -117,7 +117,7 @@ SelectTypeParameters=CR_Core
 # 
 # LOGGING AND ACCOUNTING 
 AccountingStorageEnforce=limits,qos 
-AccountingStorageHost=slurm18-test
+AccountingStorageHost=<%= @hostname %>
 #AccountingStorageLoc=/var/spool/slurm-llnl/slurmctld/accounting_storage.txt
 #AccountingStoragePass=
 #AccountingStoragePort=
@@ -125,7 +125,7 @@ AccountingStorageType=accounting_storage/slurmdbd
 AccountingStorageTRES=cpu,mem,node
 #AccountingStorageUser=
 #AccountingStoreJobComment=YES
-ClusterName=cluster
+ClusterName=<%= @ClusterName %>
 #DebugFlags= 
 #JobCompHost=
 #JobCompLoc=
@@ -157,5 +157,5 @@ SlurmdLogFile=/var/log/slurm-llnl/slurmd.%n.log
 # 
 # 
 # COMPUTE NODES 
-NodeName=test_node[1-10] Port=[9001-9010] NodeAddr=140.107.117.214 CPUs=1 State=UNKNOWN 
-PartitionName=campus Nodes=test_node[1-10] Default=YES MaxTime=INFINITE State=UP
+NodeName=node[1-10] Port=[9001-9010] NodeAddr=140.107.117.214 CPUs=1 State=UNKNOWN 
+PartitionName=campus Nodes=node[1-10] Default=YES MaxTime=INFINITE State=UP
