@@ -27,5 +27,5 @@ package_list = %w(
 )
 
 apt_package package_list do
-  options "--allow-unauthenticated"
+  options '--allow-unauthenticated'
 end
