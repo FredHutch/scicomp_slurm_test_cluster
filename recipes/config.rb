@@ -45,4 +45,19 @@ template '/etc/slurm-llnl/slurmdbd.conf' do
     ClusterName: node['slurm_test_cluster']['ClusterName'],
     StoragePass: node.default['slurm_test_cluster']['mysql_password']
   )
+  notifies :restart, 'service[slurmdbd]', :immediate
+end
+
+# Start the DBD immediately (if not running)
+service 'slurmdbd' do
+  action :start
+end
+
+execute 'register cluster' do
+  command "sacctmgr -i create cluster #{node['slurm_test_cluster']['ClusterName']}"
+  not_if { `sacctmgr -P -n show cluster where name=#{node['slurm_test_cluster']['ClusterName']} format=cluster`.chomp == node['slurm_test_cluster']['ClusterName'] }
+end
+
+service 'slurmctld' do
+  action :start
 end
