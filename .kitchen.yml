@@ -9,6 +9,7 @@ driver:
 provisioner:
   name: chef_zero
   always_update_cookbooks: true
+  log_level: info
 
 verifier:
   name: inspec
@@ -24,6 +25,7 @@ suites:
       - recipe[scicomp_slurm_test_cluster::database]
       - recipe[scicomp_slurm_test_cluster::packages]
       - recipe[scicomp_slurm_test_cluster::config]
+      - recipe[scicomp_slurm_test_cluster::slurmd]
     verifier:
       inspec_tests:
         - test/smoke/default
