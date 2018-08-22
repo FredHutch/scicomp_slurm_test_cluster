@@ -4,6 +4,8 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
+# rubocop:disable Metrics/LineLength
+
 # install and configure the server
 
 mysql_service 'default' do
@@ -21,7 +23,7 @@ execute 'create slurm user' do
     "IDENTIFIED BY '#{node['slurm_test_cluster']['mysql_password']}'\""
   action :run
   only_if do
-    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SELECT COUNT(*) FROM user WHERE USER = 'slurm' AND HOST = '127.0.0.1'"`.to_i.zero?
+    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SELECT COUNT(*) FROM user WHERE USER = 'slurm' AND HOST = '127.0.0.1'"`.to_i.zero? # ~FC048
   end
 end
 
@@ -32,7 +34,7 @@ execute 'create slurm grants' do
     '"GRANT ALL ON slurm_acct_db.* TO \'slurm\'@\'127.0.0.1\'"'
   action :run
   not_if do
-    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SELECT COUNT(*) FROM user WHERE USER = 'slurm' AND HOST = '127.0.0.1'"`.to_i.zero?
+    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SELECT COUNT(*) FROM user WHERE USER = 'slurm' AND HOST = '127.0.0.1'"`.to_i.zero? # ~FC048
   end
 end
 
@@ -43,6 +45,6 @@ execute 'create slurm account database' do
     '"CREATE DATABASE slurm_acct_db"'
   action :run
   not_if do
-    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SHOW DATABASES LIKE 'slurm_acct_db'"`.chomp == 'slurm_acct_db'
+    `/usr/bin/mysql -u root -p#{node['slurm_test_cluster']['mysql_password']} -D mysql -r -B -N -h 127.0.0.1 -e "SHOW DATABASES LIKE 'slurm_acct_db'"`.chomp == 'slurm_acct_db' # ~FC048
   end
 end

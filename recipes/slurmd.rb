@@ -12,4 +12,3 @@
     # not_if "pgrep -f \"/usr/sbin/slurmd -N node#{i}\""
   end
 end
-

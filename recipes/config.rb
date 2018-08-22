@@ -4,6 +4,8 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
+# rubocop:disable Metrics/LineLength
+
 directory '/var/spool/slurm-llnl' do
   owner 'root'
   group 'root'
@@ -55,7 +57,7 @@ end
 
 execute 'register cluster' do
   command "sleep 10 && sacctmgr -i create cluster #{node['slurm_test_cluster']['ClusterName']}"
-  not_if { `sleep 10 && sacctmgr -P -n show cluster where name=#{node['slurm_test_cluster']['ClusterName']} format=cluster`.chomp == node['slurm_test_cluster']['ClusterName'] }
+  not_if { `sleep 10 && sacctmgr -P -n show cluster where name=#{node['slurm_test_cluster']['ClusterName']} format=cluster`.chomp == node['slurm_test_cluster']['ClusterName'] } # ~FC048
 end
 
 service 'slurmctld' do
