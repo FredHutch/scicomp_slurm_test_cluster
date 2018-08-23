@@ -45,7 +45,7 @@ template '/etc/slurm-llnl/slurmdbd.conf' do
   variables(
     DbdHost: node['hostname'],
     ClusterName: node['slurm_test_cluster']['ClusterName'],
-    StoragePass: node.default['slurm_test_cluster']['mysql']['password']
+    StoragePass: node['slurm_test_cluster']['mysql']['password']
   )
   notifies :restart, 'service[slurmdbd]', :immediate
 end
