@@ -15,6 +15,7 @@ user 'slurm' do
   gid 'slurm'
   home '/var/spool/slurm-llnl'
   shell '/bin/bash'
+  not_if 'getent passwd slurm'
 end
 
 package_list = %w(
