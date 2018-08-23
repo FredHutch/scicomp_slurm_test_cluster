@@ -6,6 +6,7 @@
 
 group 'slurm' do
   gid '6281'
+  not_if 'getent group slurm'
 end
 
 user 'slurm' do
