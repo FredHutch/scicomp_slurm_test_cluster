@@ -10,7 +10,7 @@
 
 mysql_service 'default' do
   version '5.7'
-  bind_address '127.0.0.1'
+  bind_address '0.0.0.0'
   initial_root_password node['slurm_test_cluster']['mysql_password']
   action [:create, :start]
 end
