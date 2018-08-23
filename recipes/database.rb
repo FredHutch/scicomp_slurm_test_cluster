@@ -13,7 +13,6 @@ mysql_service 'default' do
   bind_address '0.0.0.0'
   initial_root_password node['slurm_test_cluster']['mysql_password']
   action [:create, :start]
-  not_if '[ -f /var/lib/mysql/mysql/user.frm ]'
 end
 
 execute 'sleep timer' do
