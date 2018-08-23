@@ -9,7 +9,7 @@
 # install and configure the server
 
 mysql_service 'default' do
-  version '5.7'
+  version '5.6'
   bind_address '0.0.0.0'
   initial_root_password node['slurm_test_cluster']['mysql_password']
   action [:create, :start]
