@@ -15,6 +15,10 @@ mysql_service 'default' do
   action [:create, :start]
 end
 
+execute 'sleep timer' do
+  command 'sleep 10'
+end
+
 execute 'create slurm user' do
   command '/usr/bin/mysql -u root ' \
     "-p#{node['slurm_test_cluster']['mysql_password']} " \
