@@ -33,7 +33,8 @@ template '/etc/slurm-llnl/slurm.conf' do
   mode '0644'
   variables(
     hostname: node['hostname'],
-    ClusterName: node['slurm_test_cluster']['ClusterName']
+    ClusterName: node['slurm_test_cluster']['ClusterName'],
+    NodeAddr: node['ipaddress']
   )
 end
 
